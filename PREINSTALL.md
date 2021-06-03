@@ -4,7 +4,7 @@ There are two functions in the extension - one to send the code and the other va
 
 The function `twilioSendOTP` needs to be called with two variables: `channel` ("sms" or "call") and `number` - a phone number in E.164 format. On calling, the function checks for authentication depending on the configuration of the extension. If the function is called without authentication from your Firebase app and the extension is configured to only allow authenticated calls, it will throw an error.
 
-The function then returns an object with `status` - which can be either "approved" or "pending". 
+If successful, the function will return an object with `status` - which can be either "approved" or "pending". 
 
 Here's a basic example how you can call this function from your app to send a one time verification code:
 
@@ -19,7 +19,7 @@ The function `twilioCheckOTP` needs to be called with two variables: `code` - th
 
 The function will authenticate the code with Twilio Verify and then return an object with `status` - which can be either "approved" or "pending". 
 
-Here's a basic example how you can call this function from your app to send a one time verification code:
+Here's a basic example how you can call this function from your app to verify a one time verification code:
 
 ```js
 functions.httpsCallable('ext-${EXT_INSTANCE_ID}-twilioCheckOTP')({
