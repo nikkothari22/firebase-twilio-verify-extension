@@ -1,11 +1,13 @@
 name: custom-twilio-verify-extension
-version: 0.0.1
+version: 0.0.2
 specVersion: v1beta # Firebase Extensions specification version (do not edit)
 
 displayName: Twilio Verify Extension (Unofficial)
 description: Functions to send users one time passwords and verify them using Twilio Verify. (Not an official extension)
 
 license: Apache-2.0 # The license you want for the extension
+
+sourceURL: https://github.com/nikkothari22/firebase-twilio-verify-extension
 
 author:
   authorName: Nikhil Kothari
