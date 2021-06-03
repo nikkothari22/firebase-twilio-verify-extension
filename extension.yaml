@@ -1,0 +1,89 @@
+name: custom-twilio-verify-extension
+version: 0.0.1
+specVersion: v1beta # Firebase Extensions specification version (do not edit)
+
+displayName: Twilio Verify Extension (Unofficial)
+description: Functions to send users one time passwords and verify them using Twilio Verify. (Not an official extension)
+
+license: Apache-2.0 # The license you want for the extension
+
+author:
+  authorName: Nikhil Kothari
+  email: nik.kothari22@live.com
+  url: https://github.com/nikkothari22 # Author URL
+
+billingRequired: true
+
+params:
+  - param: LOCATION
+    label: Cloud Functions location
+    description: >-
+      Where do you want to deploy the functions created for this extension?
+      You usually want a location close to your customers. For help selecting a
+      location, refer to the [location selection
+      guide](https://firebase.google.com/docs/functions/locations).
+    type: select
+    options:
+      - label: Iowa (us-central1)
+        value: us-central1
+      - label: South Carolina (us-east1)
+        value: us-east1
+      - label: Northern Virginia (us-east4)
+        value: us-east4
+      - label: Belgium (europe-west1)
+        value: europe-west1
+      - label: London (europe-west2)
+        value: europe-west2
+      - label: Frankfurt (europe-west3)
+        value: europe-west3
+      - label: Hong Kong (asia-east2)
+        value: asia-east2
+      - label: Tokyo (asia-northeast1)
+        value: asia-northeast1
+    default: us-central1
+    required: true
+    immutable: true
+  - param: TWILIO_ACCOUNT_SID
+    label: Twilio Account SID
+    description: You can find your Twilio Account SID in the [Twilio Console](https://www.twilio.com/console)
+    example: ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    type: string
+    required: true
+  - param: TWILIO_AUTH_TOKEN
+    label: Twilio Auth Token
+    description: You can find your Twilio Auth Token in the [Twilio Console](https://www.twilio.com/console)
+    type: string
+    required: true
+  - param: TWILIO_VERIFY_SID
+    label: Twilio Verify Service SID
+    description: Add your Twilio Verification Service SID here. If you do not have an existing Service, you need to create one in the [Twilio Verify Console](https://www.twilio.com/console/verify/services).
+    example: VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    type: string
+    required: true
+  - param: USER_AUTHENTICATION_REQUIRED
+    label: Only allow requests from authenticated users?
+    description: The extension creates two cloud functions which are meant to be called from your apps. If set to yes, only authenticated requests will be served.
+    type: select
+    options:
+      - label: Yes (recommended)
+        value: true
+      - label: No (allow anyone to call this function)
+        value: false
+    default: true
+    required: true
+
+resources:
+  - name: twilioCheckOTP
+    type: firebaseextensions.v1beta.function
+    description: Function which checks the one time verification code/token using Twilio's Verify API and returns the status back to the client. To be called from the app (onCall()).
+    properties:
+      location: ${LOCATION}
+      runtime: nodejs12
+      httpsTrigger: {}
+  - name: twilioSendOTP
+    type: firebaseextensions.v1beta.function
+    description: Function which sends a one time verification code to the phone number using Twilio's Verify API and returns the status back to the client. To be called from the app (onCall()).
+    properties:
+      location: ${LOCATION}
+      runtime: nodejs12
+      httpsTrigger: {}
