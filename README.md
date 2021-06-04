@@ -1,6 +1,6 @@
 # Custom Twilio Verify Extension
 
-[**Install the extension using this link**](https://console.firebase.google.com/project/_/extensions/install?ref=nikkothari22/custom-twilio-verify-extension@0.0.2)
+[**Install the extension using this link**](https://console.firebase.google.com/project/_/extensions/install?ref=nikkothari22/custom-twilio-verify-extension)
 
 **Author**: Nikhil Kothari (**[https://github.com/nikkothari22](https://github.com/nikkothari22)**)
 
