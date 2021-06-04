@@ -39,7 +39,7 @@ functions.httpsCallable('ext-${param:EXT_INSTANCE_ID}-twilioCheckOTP')({
 }).then(result => console.log(result.data.status))
 ```
 
-The function will authenticate the code with Twilio Verify and then return an object with `status` - which can be either "approved" or "pending". 
+The function will authenticate the code with Twilio Verify and then return an object with `status` - which can be either "approved", "pending" or "canceled". 
 
 Usage of this extension also requires a Twilio account with the Twilio Verify service. You are responsible for any associated costs with your usage of Twilio and Firebase.
 

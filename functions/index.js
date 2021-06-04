@@ -19,7 +19,7 @@ const requireAuthentication = process.env.USER_AUTHENTICATION_REQUIRED;
 `* Function called from app with parameters number and channel
  * @param {string} data.number - A phone number in E.164 format
  * @param {string} [data.channel=sms] - Channel you want to send the verification code to : 'sms' or 'call' (Default: 'sms')
- * @returns {Response} - Status of the verification: "pending" or "approved"
+ * @returns {Response} - Status of the verification: ""pending", "approved" or "canceled"
  */
 exports.twilioSendOTP = functions.handler.https.onCall((data, context) => {
 
@@ -50,7 +50,7 @@ exports.twilioSendOTP = functions.handler.https.onCall((data, context) => {
 `* Function called from app with parameters number and channel
  * @param {string} data.number - A phone number in E.164 format
  * @param {string} data.code - The verification code to validate the phone number
- * @returns {Response} - Status of the verification: "pending" or "approved"
+ * @returns {Response} - Status of the verification: "pending", "approved" or "canceled"
  */
 exports.twilioCheckOTP = functions.handler.https.onCall((data, context) => {
 

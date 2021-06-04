@@ -1,5 +1,7 @@
 # Custom Twilio Verify Extension
 
+[**Install the extension using this link**](https://console.firebase.google.com/project/_/extensions/install?ref=nikkothari22/custom-twilio-verify-extension@0.0.2)
+
 **Author**: Nikhil Kothari (**[https://github.com/nikkothari22](https://github.com/nikkothari22)**)
 
 **Description**: Functions to send users one time passwords and verify them using Twilio Verify. (Not an official extension)
@@ -12,7 +14,7 @@ There are two functions in the extension - one to send the code and the other va
 
 The function `twilioSendOTP` needs to be called with two variables: `channel` ("sms" or "call") and `number` - a phone number in E.164 format. On calling, the function checks for authentication depending on the configuration of the extension. If the function is called without authentication from your Firebase app and the extension is configured to only allow authenticated calls, it will throw an error.
 
-If successful, the function will return an object with `status` - which can be either "approved" or "pending". 
+If successful, the function will return an object with `status` - which can be either "approved", "pending" or "canceled". 
 
 Here's a basic example how you can call this function from your app to send a one time verification code:
 
@@ -25,7 +27,7 @@ functions.httpsCallable('ext-${EXT_INSTANCE_ID}-twilioSendOTP')({
 
 The function `twilioCheckOTP` needs to be called with two variables: `code` - the verification code entered by the user, and `number` - a phone number in E.164 format. On calling, the function checks for authentication depending on the configuration of the extension. If the function is called without authentication from your Firebase app and the extension is configured to only allow authenticated calls, it will throw an error.
 
-The function will authenticate the code with Twilio Verify and then return an object with `status` - which can be either "approved" or "pending". 
+The function will authenticate the code with Twilio Verify and then return an object with `status` - which can be either "approved", "pending" or "canceled". 
 
 Here's a basic example how you can call this function from your app to verify a one time verification code:
 
