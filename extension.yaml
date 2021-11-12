@@ -54,7 +54,7 @@ params:
   - param: TWILIO_AUTH_TOKEN
     label: Twilio Auth Token
     description: You can find your Twilio Auth Token in the [Twilio Console](https://www.twilio.com/console)
-    type: string
+    type: secret
     required: true
   - param: TWILIO_VERIFY_SID
     label: Twilio Verify Service SID
